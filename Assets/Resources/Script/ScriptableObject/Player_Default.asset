@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b8f0743223f51c4cb7b87a98c04f6cd, type: 3}
   m_Name: Player_Default
   m_EditorClassIdentifier: 
-  actorName: 
+  actorName: Player
   attackType: 0
   description: 
   health: 0
   speed: 0
   hitPower: 0
-  actor: {fileID: 0}
-  actorBullets: {fileID: 0}
+  actor: {fileID: 8516944841598313278, guid: ead898bfa36a21c4bab2baab310eb27e, type: 3}
+  actorBullets: {fileID: 867605876947106684, guid: 2922dd341b600d24f8e9a1160db4a358, type: 3}
