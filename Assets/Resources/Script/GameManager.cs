@@ -1,20 +1,56 @@
-using System.Collections;
-using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static int currentScene = 0;
+    public static int gameLevelScene = 1;
+
+    bool died = false;
+    public bool Died
     {
-        CameraSetup();
-        LightSetup();
+        get { return died; }
+        set { died = value; }
     }
 
-    // Update is called once per frame
-    void Update()
+    static GameManager instance;
+    public static GameManager Instance
     {
+        get {  return instance; }
+    }
 
+    void Awake()
+    {
+        CheckGameManagerIsInThisScene();
+        currentScene = SceneManager.GetActiveScene().buildIndex;
+        LightandCameraSetup(currentScene);
+    }
+
+    void CheckGameManagerIsInThisScene()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+        DontDestroyOnLoad(this);
+    }
+
+    void LightandCameraSetup(int sceneNumber)
+    {
+        switch (sceneNumber)
+        {
+            //testlevel, level1, level2, level3
+            case 3: case 4: case 5: case 6:
+            {
+                LightSetup();
+                CameraSetup();
+                break;
+            }
+        }
     }
 
     void CameraSetup()
